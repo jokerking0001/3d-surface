@@ -9,28 +9,24 @@ import math
 
 fig = plt.figure()
 ax = fig.gca(projection='3d')
-Z=[]
 # Make data.
-X = np.arange(-10, 0, 0.01)
-Y = np.arange(-10, 0, 0.01)
+X = np.arange(-10, 10, 0.01)
+Y = np.arange(-10, 10, 0.01)
 X, Y = np.meshgrid(X, Y)
-for i in np.arange(-10,0,0.01):
-    if i != 0:
-        xyz = (-1)*(math.sin(i)/i)*(math.sin(i/i))
-    else :
-        xyz = 1
-    Z.append(xyz)
-
+Z = (-1)*(np.sin(X)/X)*(np.sin(Y)/Y)
 
 # Plot the surface.
 surf = ax.plot_surface(X, Y, Z, cmap=cm.coolwarm,linewidth=0, antialiased=False)
-'''
+
+
 # Customize the z axis.
-ax.set_zlim(-1.01, 1.01)
+ax.set_zlim(-1, 0.4)
 ax.zaxis.set_major_locator(LinearLocator(10))
 ax.zaxis.set_major_formatter(FormatStrFormatter('%.02f'))
 
+
 # Add a color bar which maps values to colors.
 fig.colorbar(surf, shrink=0.5, aspect=5)
-'''
+
+
 plt.show()
